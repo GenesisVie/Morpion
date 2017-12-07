@@ -7,19 +7,14 @@ b3="b3"
 c1="c1"
 c2="c2"
 c3="c3"
-grille = [[a1,a2,a3],[b1,b2,b3],[c1,c2,c3]]
+grille = [["","1","2","3"],["a",a1,a2,a3],["b",b1,b2,b3],["c",c1,c2,c3]]
 
 def afficheplateau():
-	print plateaua
-	print plateaub
-	print plateauc
-
-def verifJoueur1():
-    if a=="
-
+	print grille
 
 def joueur1 (choix):
     choix=input(string)
+    test()
     if choix == "a1":
         grille [0,0]="X"
 
@@ -46,3 +41,18 @@ def joueur1 (choix):
 
     if choix == "c3":
         grille[2,2]="X"
+
+def test():
+        
+
+def Jeu():
+        while partie()==false:
+                affichetableau()
+                joueur1()
+                affichetableau()
+                joueur2()
+                break
+        
+                
+
+        
