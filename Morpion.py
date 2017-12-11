@@ -6,12 +6,17 @@ reponses={'a1','a2','a3','b1','b2','b3','c1','c2','c3'}
 grille = ([" "," ", " "], [" " , " ", " "], [" ", " ", " "])
 
 def jouer(joueur):
-    print("Choisir une case")
+    if joueur == "X":
+        print("Le J1 doit choisir une case :")
+    else:
+        print("Le J2 doit choisir une case :")
+
     choix = input()
+
     global reponses
 
     while choix not in reponses:
-        print(choix," n'est pas une case valide")
+        print(choix," n'est pas une case valide \n Choisir une autre case :")
         choix=input()
 
     if choix == "a1":
@@ -72,14 +77,15 @@ def main():
     joueur2="O"
     nbtours=0
 
-    while nbtours <= 9:
+    while True:
         jouer(joueur1)
         print(tabulate.tabulate(grille,tablefmt='fancy_grid'))
-        #import pdb; pdb.set_trace()
         if has_win():
             print("J1 a gagné")
             return
         nbtours +=1
+        if nbtours==9:
+            break
         jouer(joueur2)
         print(tabulate.tabulate(grille,tablefmt='fancy_grid'))
         if has_win():
