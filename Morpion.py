@@ -1,7 +1,8 @@
 import tabulate
+import sys
 tabulate.PRESERVE_WHITESPACE=True
 
-reponses={'a1','a2','a3','b1','b2','b3','c1','c2','c3'}
+reponses={'a1','a2','a3','b1','b2','b3','c1','c2','c3','quit'}
 
 grille = ([" "," ", " "], [" " , " ", " "], [" ", " ", " "])
 
@@ -18,6 +19,14 @@ def jouer(joueur):
     while choix not in reponses:
         print(choix," n'est pas une case valide \n Choisir une autre case :")
         choix=input()
+
+    if choix=="quit":
+        if joueur == "X":
+            print("Le joueur 1 n'a pas assumé :/")
+            sys.exit(0)
+        else:
+            print("Le joueur 2 n'a pas assumé :/")
+            sys.exit(0)
 
     if choix == "a1":
         grille[0][0] = joueur
@@ -56,17 +65,17 @@ def jouer(joueur):
         reponses-={'c3'}
 
 
-def has_win():
+def has_win(tab):
 
     for i in range(3):
-        if grille[0][i] == grille[1][i] == grille[2][i] and grille[0][i]!=' ':
+        if tab[0][i] == tab[1][i] == tab[2][i] and tab[0][i]!=' ':
             return True
-        if grille[i][0] == grille[i][1] == grille[i][2] and grille[i][0]!=' ':
+        if tab[i][0] == tab[i][1] == tab[i][2] and tab[i][0]!=' ':
             return True
 
-    if grille[0][0] == grille[1][1] == grille[2][2] and grille[0][0]!=' ':
+    if tab[0][0] == tab[1][1] == tab[2][2] and tab[0][0]!=' ':
         return True
-    if grille[2][0] == grille[1][1] == grille[0][2] and grille[0][2]!=' ':
+    if tab[2][0] == tab[1][1] == tab[0][2] and tab[0][2]!=' ':
         return True
 
     return False
@@ -76,11 +85,11 @@ def main():
     joueur1="X"
     joueur2="O"
     nbtours=0
-
+    print("'quit' pour quitter le programme")
     while True:
         jouer(joueur1)
         print(tabulate.tabulate(grille,tablefmt='fancy_grid'))
-        if has_win():
+        if has_win(grille):
             print("J1 a gagné")
             return
         nbtours +=1
@@ -88,7 +97,7 @@ def main():
             break
         jouer(joueur2)
         print(tabulate.tabulate(grille,tablefmt='fancy_grid'))
-        if has_win():
+        if has_win(grille):
             print("J2 a gagné")
             return
         nbtours +=1
