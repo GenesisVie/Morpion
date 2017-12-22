@@ -1,3 +1,9 @@
 language: python
 virtualenv:
   system_site_packages: true
+
+python:
+        - '2.7'
+
+script:
+        - python test_Morpion.py
