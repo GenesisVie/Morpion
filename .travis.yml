@@ -1,9 +1,8 @@
 language: python
-virtualenv:
-  system_site_packages: true
-
 python:
         - '2.7'
 
+install: "make"
+
 script:
-        - python test_Morpion.py
+        - make test
