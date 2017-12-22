@@ -4,8 +4,11 @@ python:
 
 install:
         - pip install codecov
+        - pip install tox
         - make
 
 script:
         - make test
-        - codecov
+
+after_success:
+        - tox codecov
